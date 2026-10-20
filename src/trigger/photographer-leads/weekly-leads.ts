@@ -43,11 +43,8 @@ function requireEnv(name: string): string {
 
 export const weeklyPhotographerLeads = schedules.task({
   id: "photographer-leads-weekly",
-  cron: {
-    pattern: "0 9 * * 1", // chaque lundi à 9h
-    timezone: "Europe/Paris",
-    environments: ["PRODUCTION"],
-  },
+  // Planning désactivé le 2026-10-20. Pour le réactiver (chaque lundi à 9h), remettre :
+  // cron: { pattern: "0 9 * * 1", timezone: "Europe/Paris", environments: ["PRODUCTION"] },
   run: async (payload) => {
     const resendKey = requireEnv("RESEND_API_KEY");
     const redisUrl = requireEnv("UPSTASH_REDIS_REST_URL");
